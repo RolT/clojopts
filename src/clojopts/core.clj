@@ -17,7 +17,7 @@ use: (read-spec '(no-arg [\"name\"] \"the program name\"))"
 
 (macro-do [fname arg-val]
   `(do
-     (defn ~fname {:arglists '~'([name+ doc specs])}
+     (defn ~fname {:arglists '~'([name+ doc & specs])}
        ([names# doc# & specs#]
           (option names# doc# (apply hash-map :arg ~arg-val specs#))))
      (defmethod read-spec ~(qualified-keyword fname)
